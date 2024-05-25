@@ -23,20 +23,6 @@ public class Hints {
         return countStrike + "스트라이크";
     }
 
-    public static Hints getHints(Balls playerBalls, Balls opponentBalls) {
-        int strikeCountMethodValue = 0;
-        int ballCountMethodValue = 0;
-        for (int i = 0; i < 3; i++) {
-            if (opponentBalls.getBallByIndex(i).equals(playerBalls.getBallByIndex(i))) {
-                strikeCountMethodValue++;
-            }
-            if (!(opponentBalls.getBallByIndex(i).equals(playerBalls.getBallByIndex(i))) &&
-                    opponentBalls.contains(playerBalls.getBallByIndex(i))) {
-                ballCountMethodValue++;
-            }
-        }
-        return new Hints(strikeCountMethodValue, ballCountMethodValue);
-    }
 
     @Override
     public boolean equals(Object object) {
@@ -44,6 +30,10 @@ public class Hints {
         if (object == null || getClass() != object.getClass()) return false;
         Hints hints = (Hints) object;
         return countStrike == hints.countStrike && countBall == hints.countBall;
+    }
+
+    public boolean isClearGame() {
+        return this.equals(new Hints(3, 0));
     }
 
 }

@@ -5,6 +5,7 @@ import baseball.agent.BaseballReferee;
 import baseball.agent.OpponentPlayer;
 import baseball.configuration.BaseballConfig;
 import baseball.entity.Balls;
+import baseball.entity.Hints;
 import baseball.funtions.BaseballViewer;
 import baseball.funtions.InteractController;
 
@@ -37,10 +38,12 @@ public class BaseballPresenter {
     public void playBaseball() {
         Balls opponentBalls = opponentPlayer.decisionBalls();
         while (true) {
+            BaseballViewer.enterUserGuess();
             Balls currentPlayerBalls = player.selectBalls();
-            boolean clearGameBool =
-                    referee.judgeKindOfBalls(currentPlayerBalls, opponentBalls);
-            if (clearGameBool) {
+            Hints hints = referee.judgeBallsMakeHints(currentPlayerBalls, opponentBalls);
+            BaseballViewer.showHints(hints);
+            if (referee.judgeClearGame(hints)) {
+                BaseballViewer.clearMessage();
                 return;
             }
         }
