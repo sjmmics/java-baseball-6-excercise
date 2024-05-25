@@ -1,6 +1,6 @@
 package baseball.funtions;
 
-public class Validator {
+public class InputValidator {
 
     public void checkBallsInput(Object obj) throws IllegalArgumentException {
         String inputString = (String) obj;

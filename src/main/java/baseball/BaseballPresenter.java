@@ -2,27 +2,40 @@ package baseball;
 
 import baseball.agent.BaseballPlayer;
 import baseball.agent.BaseballReferee;
+import baseball.agent.OpponentPlayer;
+import baseball.configuration.BaseballConfig;
 import baseball.entity.Balls;
 import baseball.funtions.BaseballViewer;
-import baseball.funtions.Validator;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.funtions.InteractController;
 
 public class BaseballPresenter {
-    public void run() {
+    private BaseballPlayer player;
+    private BaseballReferee referee;
+    private InteractController interactController;
+    private OpponentPlayer opponentPlayer;
 
+    public void run() {
+        setConfig();
         BaseballViewer.gameStart();
         while (true) {
             playBaseball();
-            if (!keepPlayBaseball()) {
+            if (!interactController.keepPlayBaseball()) {
                 return;
             }
         }
     }
 
+    private void setConfig() {
+        BaseballConfig config = new BaseballConfig();
+        player = config.baseballPlayer();
+        referee = config.baseballReferee();
+        interactController = config.interactController();
+        opponentPlayer = config.opponentPlayer();
+
+    }
+
     public void playBaseball() {
-        BaseballReferee referee = new BaseballReferee();
-        Balls componetBalls = Balls.makeComponentBalls();
-        BaseballPlayer player = new BaseballPlayer(new Validator());
+        Balls componetBalls = opponentPlayer.decisionOpponentBalls();
         while (true) {
             Balls currentPlayerBalls = player.selectBalls();
             boolean clearGameBool =
@@ -33,12 +46,6 @@ public class BaseballPresenter {
         }
     }
 
-    public boolean keepPlayBaseball() {
-        BaseballViewer.continueGame();
-        String keepPlayInput = Console.readLine();
-        Validator validator = new Validator();
-        validator.checkKeepPlayInput(keepPlayInput);
-        return keepPlayInput.equals("1");
-    }
+
 
 }

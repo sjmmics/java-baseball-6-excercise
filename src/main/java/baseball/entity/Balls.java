@@ -1,7 +1,5 @@
 package baseball.entity;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,17 +18,6 @@ public class Balls {
     public Balls(List<Integer> ballsList) {
         balls = new ArrayList<>();
         balls.addAll(ballsList);
-    }
-
-    public static Balls makeComponentBalls() {
-        List<Integer> componentBallsList = new ArrayList<>();
-        while (componentBallsList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!componentBallsList.contains(randomNumber)) {
-                componentBallsList.add(randomNumber);
-            }
-        }
-        return new Balls(componentBallsList);
     }
 
     @Override

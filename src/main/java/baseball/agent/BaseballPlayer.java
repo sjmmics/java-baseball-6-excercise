@@ -1,14 +1,15 @@
 package baseball.agent;
 
 import baseball.funtions.BaseballViewer;
-import baseball.funtions.Validator;
+
 import baseball.entity.Balls;
+import baseball.funtions.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballPlayer {
-    private final Validator validator;
+    private final InputValidator validator;
 
-    public BaseballPlayer(Validator validator) {
+    public BaseballPlayer(InputValidator validator) {
         this.validator = validator;
     }
 

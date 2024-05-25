@@ -23,15 +23,15 @@ public class Hints {
         return countStrike + "스트라이크";
     }
 
-    public static Hints getHints(Balls playerBalls, Balls componentBalls) {
+    public static Hints getHints(Balls playerBalls, Balls opponentBalls) {
         int strikeCountMethodValue = 0;
         int ballCountMethodValue = 0;
         for (int i = 0; i < 3; i++) {
-            if (componentBalls.getBallByIndex(i).equals(playerBalls.getBallByIndex(i))) {
+            if (opponentBalls.getBallByIndex(i).equals(playerBalls.getBallByIndex(i))) {
                 strikeCountMethodValue++;
             }
-            if (!(componentBalls.getBallByIndex(i).equals(playerBalls.getBallByIndex(i))) &&
-                    componentBalls.contains(playerBalls.getBallByIndex(i))) {
+            if (!(opponentBalls.getBallByIndex(i).equals(playerBalls.getBallByIndex(i))) &&
+                    opponentBalls.contains(playerBalls.getBallByIndex(i))) {
                 ballCountMethodValue++;
             }
         }
