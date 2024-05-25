@@ -1,5 +1,8 @@
-1st 커밋
-클래스 추가 : Balls, BaseballConfig, BaseballPresenter, BaseballView
-Balls 클래스 구현: 인스턴스 변수, 생성자, equals 구현
-Referee 클래스 구현: 정답 Balls 생성 메서드(makeComponentBalls())**
+기능
 
+상대방 3자리 숫자 랜덤으로 생성
+입력값 검증
+같은 3자리 숫자인지 판별
+힌트 생성
+힌트 출력
+클리어하면 계속할지 확인하기
