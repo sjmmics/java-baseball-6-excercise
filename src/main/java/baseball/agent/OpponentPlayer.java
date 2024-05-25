@@ -8,7 +8,7 @@ import java.util.List;
 
 public class OpponentPlayer {
     
-    public Balls decisionOpponentBalls() {
+    public Balls decisionBalls() {
         List<Integer> opponentBallsList = new ArrayList<>();
         while (opponentBallsList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

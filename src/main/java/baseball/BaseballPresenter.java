@@ -35,11 +35,11 @@ public class BaseballPresenter {
     }
 
     public void playBaseball() {
-        Balls componetBalls = opponentPlayer.decisionOpponentBalls();
+        Balls opponentBalls = opponentPlayer.decisionBalls();
         while (true) {
             Balls currentPlayerBalls = player.selectBalls();
             boolean clearGameBool =
-                    referee.judgeKindOfBalls(currentPlayerBalls, componetBalls);
+                    referee.judgeKindOfBalls(currentPlayerBalls, opponentBalls);
             if (clearGameBool) {
                 return;
             }
