@@ -1,7 +1,7 @@
 package baseball.agent;
 
 import baseball.entity.Balls;
-import baseball.funtions.InputValidator;
+import baseball.function.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballPlayer {
@@ -13,7 +13,7 @@ public class BaseballPlayer {
 
     public Balls selectBalls() {
         String playerBallsString = Console.readLine();
-        validator.checkBallsInput(playerBallsString);
+        validator.validateBallsInput(playerBallsString);
         return new Balls(playerBallsString);
     }
 }

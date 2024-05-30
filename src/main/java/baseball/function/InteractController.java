@@ -1,6 +1,7 @@
-package baseball.funtions;
+package baseball.function;
 
 import camp.nextstep.edu.missionutils.Console;
+import constant.Constant;
 
 public class InteractController {
     private final InputValidator validator;
@@ -10,9 +11,9 @@ public class InteractController {
     }
 
     public boolean keepPlayBaseball() {
-        BaseballViewer.continueGame();
+        Viewer.continueGame();
         String keepPlayInput = Console.readLine();
         validator.checkKeepPlayInput(keepPlayInput);
-        return keepPlayInput.equals("1");
+        return keepPlayInput.equals(Constant.KEEP_PLAYING_FLAG);
     }
 }

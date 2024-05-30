@@ -6,8 +6,8 @@ import baseball.agent.OpponentPlayer;
 import baseball.configuration.BaseballConfig;
 import baseball.entity.Balls;
 import baseball.entity.Hints;
-import baseball.funtions.BaseballViewer;
-import baseball.funtions.InteractController;
+import baseball.function.Viewer;
+import baseball.function.InteractController;
 
 public class BaseballPresenter {
     private BaseballPlayer player;
@@ -17,8 +17,9 @@ public class BaseballPresenter {
 
     public void run() {
         setConfig();
-        BaseballViewer.gameStart();
+
         while (true) {
+            Viewer.gameStart();
             playBaseball();
             if (!interactController.keepPlayBaseball()) {
                 return;
@@ -32,18 +33,17 @@ public class BaseballPresenter {
         referee = config.baseballReferee();
         interactController = config.interactController();
         opponentPlayer = config.opponentPlayer();
-
     }
 
     public void playBaseball() {
         Balls opponentBalls = opponentPlayer.decisionBalls();
         while (true) {
-            BaseballViewer.enterUserGuess();
+            Viewer.enterUserGuess();
             Balls currentPlayerBalls = player.selectBalls();
             Hints hints = referee.judgeBallsMakeHints(currentPlayerBalls, opponentBalls);
-            BaseballViewer.showHints(hints);
+            Viewer.showHints(hints);
             if (referee.judgeClearGame(hints)) {
-                BaseballViewer.clearMessage();
+                Viewer.clearMessage();
                 return;
             }
         }

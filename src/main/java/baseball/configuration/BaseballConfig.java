@@ -4,8 +4,8 @@ package baseball.configuration;
 import baseball.agent.BaseballPlayer;
 import baseball.agent.BaseballReferee;
 import baseball.agent.OpponentPlayer;
-import baseball.funtions.InputValidator;
-import baseball.funtions.InteractController;
+import baseball.function.InputValidator;
+import baseball.function.InteractController;
 
 public class BaseballConfig {
 
